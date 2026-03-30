@@ -1,0 +1,53 @@
+ساخت APK نصب‌شدنی (دکان‌یار) — Capacitor + اندروید
+====================================================
+
+پیش‌نیازها
+----------
+1) JDK 17 یا 21 (JAVA_HOME تنظیم شود)
+2) Android Studio (Android SDK + Platform Tools)
+3) در ویندوز: متغیر ANDROID_HOME معمولاً زیر مسیر SDK است، مثلاً:
+   %LOCALAPPDATA%\Android\Sdk
+
+آدرس API قبل از build وب
+-------------------------
+اپ داخل WebView به بک‌اند نیاز دارد. نمونهٔ تنظیم را در .env.android.example ببینید.
+فایل را کپی کنید به .env.local و مقدار VITE_API_BASE_URL را بزنید، مثلاً:
+
+  شبیه‌ساز اندروید + سرور روی همان PC:
+    VITE_API_BASE_URL=http://10.0.2.2:4000
+
+  گوشی واقعی روی همان Wi‑Fi:
+    VITE_API_BASE_URL=http://IP_کامپیوتر:4000
+
+  سرور روی اینترنت:
+    VITE_API_BASE_URL=https://دامنه-api-شما
+
+سپس همیشه قبل از sync اندروید:
+  npm run build
+
+دستورات اصلی
+------------
+  npm run cap:sync          → build وب + کپی به پروژهٔ اندروید
+  npm run cap:open          → باز کردن پروژه در Android Studio
+
+  npm run android:debug     → (ویندوز) sync + ساخت APK دیباگ با Gradle
+  خروجی APK دیباگ:
+    android\app\build\outputs\apk\debug\app-debug.apk
+
+  روی لینوکس/مک به‌جای اسکریپت npm، بعد از cap:sync:
+    cd android && ./gradlew assembleDebug
+
+نصب روی گوشی
+------------
+فایل app-debug.apk را به گوشی بفرستید و «نصب از منابع ناشناس» را برای مرورگر/فایل‌منیجر اجازه دهید.
+
+انتشار روی سایت (دانلود از وب)
+-------------------------------
+1) APK دیباگ را با نام dokanyar.apk در پوشهٔ public\downloads\ قرار دهید.
+2) npm run build
+3) خروجی dist شامل downloads/dokanyar.apk می‌شود؛ هاست کنید.
+
+نسخهٔ Release (امضا + Play Store)
+---------------------------------
+در Android Studio: Build → Generate Signed Bundle / APK و keystore بسازید.
+یا assembleRelease را با signingConfig در app/build.gradle تنظیم کنید.

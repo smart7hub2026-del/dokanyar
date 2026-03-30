@@ -1,0 +1,40 @@
+export const PAGE_TO_PATH: Record<string, string> = {
+  dashboard: '/dashboard',
+  tenants: '/tenants',
+  billing: '/billing',
+  analytics360: '/analytics360',
+  architecture: '/architecture',
+  'security-analysis': '/security-analysis',
+  'system-analysis': '/system-analysis',
+  'business-types': '/business-types',
+  'admin-notifications': '/admin-notifications',
+  support: '/support',
+  reports: '/reports',
+  'product-sales-ranking': '/product-sales-ranking',
+  'reorder-list': '/reorder-list',
+  settings: '/settings',
+  products: '/products',
+  warehouse: '/warehouse',
+  'image-search': '/image-search',
+  customers: '/customers',
+  sales: '/sales',
+  pending: '/pending',
+  debts: '/debts',
+  reminders: '/reminders',
+  suppliers: '/suppliers',
+  accounting: '/accounting',
+  'purchase-invoice': '/purchase-invoice',
+  staff: '/staff',
+  invoices: '/invoices',
+  users: '/users',
+  notifications: '/notifications',
+  'print-settings': '/print-settings',
+  backup: '/backup',
+  offline: '/offline',
+  security: '/security',
+};
+
+export const PATH_TO_PAGE = Object.entries(PAGE_TO_PATH).reduce<Record<string, string>>((acc, [page, path]) => {
+  acc[path] = page;
+  return acc;
+}, {});

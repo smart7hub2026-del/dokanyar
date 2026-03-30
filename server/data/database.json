@@ -1,0 +1,390 @@
+{
+  "shops": [
+    {
+      "code": "SUPERADMIN",
+      "name": "Platform",
+      "tenantId": 0,
+      "passwordHash": "$2b$10$mEq3DlDBg2.bGhjuZVD2XObSsFfA//V13g9.MGqclS0L.Y/bkokSC",
+      "users": [
+        {
+          "id": 0,
+          "username": "superadmin",
+          "full_name": "مدیر پلتفرم",
+          "role": "super_admin",
+          "passwordHash": "$2b$10$mEq3DlDBg2.bGhjuZVD2XObSsFfA//V13g9.MGqclS0L.Y/bkokSC",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "code": "SHOP001",
+      "name": "فروشگاه احمد",
+      "tenantId": 1,
+      "passwordHash": "$2b$10$1c.OHtkvgQGTpd7OWlIKKe7KoNUZeu7IBN.Ifb8il3KK.PfW5YkYm",
+      "users": [
+        {
+          "id": 1,
+          "username": "admin",
+          "full_name": "مدیر دکان احمد",
+          "role": "admin",
+          "passwordHash": "$2b$10$RJrbGqZ3rDXkaWXddjSP3.VCAgkmSKv.EQlXzEL/2czbgyj5Fhxum",
+          "status": "active"
+        },
+        {
+          "id": 2,
+          "username": "seller",
+          "full_name": "احمد فروشنده",
+          "role": "seller",
+          "passwordHash": "$2b$10$t3IBne46QkO7zUkkN.13m.UGyQZ2h2Ek5GgdByz8aT7SUE9NWsh1a",
+          "status": "active"
+        },
+        {
+          "id": 3,
+          "username": "stock",
+          "full_name": "علی انباردار",
+          "role": "stock_keeper",
+          "passwordHash": "$2b$10$yaPUkTnXtlyzhK5Hxlwneu3u6ibmp91WGYKA8JqN/o9aMPrPXmPRW",
+          "status": "active"
+        },
+        {
+          "id": 4,
+          "username": "accountant",
+          "full_name": "حسابدار دکان",
+          "role": "accountant",
+          "passwordHash": "$2b$10$tMjQHzxyW5Pwll5oC2rXhO0G/I4CmxMbSs.77dxKlcvuqICnIvslG",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "code": "SHOP002",
+      "name": "سوپرمارکت کریمی",
+      "tenantId": 2,
+      "passwordHash": "$2b$10$7gqtn1pYCv488lZYCkjWaexURPQKnWV.J6E/ZJyCLW1a//KKCvW9S",
+      "users": [
+        {
+          "id": 5,
+          "username": "admin2",
+          "full_name": "مدیر فروشگاه کریمی",
+          "role": "admin",
+          "passwordHash": "$2b$10$RJrbGqZ3rDXkaWXddjSP3.VCAgkmSKv.EQlXzEL/2czbgyj5Fhxum",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "code": "GGLS5NBDG",
+      "name": "محمد",
+      "tenantId": 3,
+      "passwordHash": "$2b$10$D6TsYQnCRXV4xBzXGNujsua05vG1DLm3QznoGp4WJBY0koxpnxm2a",
+      "users": [
+        {
+          "id": 6,
+          "username": "mohib334455s@gmail.com",
+          "email": "mohib334455s@gmail.com",
+          "full_name": "محمد",
+          "role": "admin",
+          "passwordHash": "$2b$10$2Sj8OFZCQ8LB9Gwn357xB.FNcqjejslmOowSlOW6N93xEEJtlaEnC",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "code": "GGLT63KHU",
+      "name": "محمدی",
+      "tenantId": 4,
+      "passwordHash": "$2b$10$hknmKJyq7RKqmuns4gdFlexEBc4XrPbZZFeAdpcryaz0wqldxum7.",
+      "users": [
+        {
+          "id": 7,
+          "username": "fgdgfd@",
+          "email": "fgdgfd@",
+          "full_name": "محمدی",
+          "role": "admin",
+          "passwordHash": "$2b$10$0d4ETIHZC5sxe5A002zbu.OIz8xm3be4/3vAcdgF9lzO.OVcGPZkG",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "code": "GGLK9GKR3",
+      "name": "نمتنم",
+      "tenantId": 5,
+      "passwordHash": "$2b$10$GVMwLbnU858tw0DD/IkUwO.jiwpZPwRxaoJjOrW.BxHOXRjrwjpM.",
+      "users": [
+        {
+          "id": 8,
+          "username": "fdsgf",
+          "email": "fdsgf",
+          "full_name": "نمتنم",
+          "role": "admin",
+          "passwordHash": "$2b$10$9P.mr8L6LCsKv6qQIc3BZeRyTsj8enoXRmoKjPTNx6uzpIPpw0uMO",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "code": "GGLTD4UXT",
+      "name": "kljlk",
+      "tenantId": 6,
+      "passwordHash": "$2b$10$RUstTT8XSV8QudhCQpUgzOVHJmueMWR7aScpZkJoZuK/ruyA1GwQ6",
+      "users": [
+        {
+          "id": 9,
+          "username": "jkhkj",
+          "email": "jkhkj",
+          "full_name": "kljlk",
+          "role": "admin",
+          "passwordHash": "$2b$10$j9vlJB0CDikmXOe3T2S7EuWDduWsS/EjFuSRE1FpDJufboRUTRiqG",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "code": "GGL2W7Z7X",
+      "name": "سیب",
+      "tenantId": 7,
+      "passwordHash": "$2b$10$M1Z7g5QlBjqm0QHbAs1tvuBcnCwPUyeY9s7GdhgwS.UlYbG.ugIf2",
+      "users": [
+        {
+          "id": 10,
+          "username": "smart7hub2026@gmail.com",
+          "email": "smart7hub2026@gmail.com",
+          "full_name": "سیب",
+          "role": "admin",
+          "passwordHash": "$2b$10$VvyLGlDRC5PHIHr0P5G3vOxBMD1PdeLK9mg8llADjoPv1AcnxdbkO",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "code": "GGLPBGSZL",
+      "name": "تنا",
+      "tenantId": 8,
+      "passwordHash": "$2b$10$ZAasZv1Gnn1a6XRBnzawZ.drgh4tx8.tQMk.N0KR/.qGKxP1RuUOW",
+      "users": [
+        {
+          "id": 11,
+          "username": "fgd",
+          "email": "fgd",
+          "full_name": "تنا",
+          "role": "admin",
+          "passwordHash": "$2b$10$fDUsdIw./pyXUTLK908qXOrHHDwO5pIARHbw03OY0zo7ZlAiM.kwO",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "code": "GGL23HDN3",
+      "name": "lkj",
+      "tenantId": 9,
+      "passwordHash": "$2b$10$Qovs2ued5.lFUaI8sENBTuCMTuN1t//SjF9EDNo5M9qobxg7nWkly",
+      "users": [
+        {
+          "id": 12,
+          "username": "jjhk",
+          "email": "jjhk",
+          "full_name": "lkj",
+          "role": "admin",
+          "passwordHash": "$2b$10$v0JWp8q4jXiUSMV0lxZ8Iug1hR15ktotIlOttTdo0Ly1q0Co0LAQC",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "code": "GGL6DNP2E",
+      "name": "محمد",
+      "tenantId": 10,
+      "passwordHash": "$2b$10$LQd8qOO6oxTJGyFyZUX6yOU3PnnN7SBF0c7gbTkpn.DUXSGtuIg52",
+      "users": [
+        {
+          "id": 13,
+          "username": "lksjd",
+          "email": "lksjd",
+          "full_name": "محمد",
+          "role": "admin",
+          "passwordHash": "$2b$10$SY9YP6WXJWb0EhOuo1aB3OxViZ5Ws57cNJMWF1pVUgzcpzhp8Qzp2",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "code": "GGL2S7NEM",
+      "name": "cs",
+      "tenantId": 11,
+      "passwordHash": "$2b$10$Pm1IIA8o26EQt6t3X8us7u7shEYxIIhyfmSQVolUUb8IqLc9nDtcy",
+      "users": [
+        {
+          "id": 14,
+          "username": "sds",
+          "email": "sds",
+          "full_name": "cs",
+          "role": "admin",
+          "passwordHash": "$2b$10$S4wzQLHsA0S8Nj5lOIcj6OSKQhUET8C/2PSKg4cBFyOX7J8CeF8uK",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "code": "GGL4KH6YW",
+      "name": "سیب",
+      "tenantId": 12,
+      "passwordHash": "$2b$10$00V4iO6UMIX5lNUZSBnmcOyCHtjivgwiraWATTasf.EQJsO3grNge",
+      "users": [
+        {
+          "id": 15,
+          "username": "س",
+          "email": "س",
+          "full_name": "سیب",
+          "role": "admin",
+          "passwordHash": "$2b$10$IaFIppxfUWi4SLFRMWMF0.uK0ygNWB2khqcanMsoQ/I6K1jgQpHl2",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "code": "GGLQA9F8K",
+      "name": "صث",
+      "tenantId": 13,
+      "passwordHash": "$2b$10$FBfEFfAORawoAR/acOENYeAWsORPytPuvN12Doh/iDe/ENG8EKJcm",
+      "users": [
+        {
+          "id": 16,
+          "username": "سبیب",
+          "email": "سبیب",
+          "full_name": "صث",
+          "role": "admin",
+          "passwordHash": "$2b$10$LEfsnggosfXeidpaqPARlOzu8ezWiaW08Ufz9tCJciSzhd4DEsLSa",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "code": "GGLDAWHRB",
+      "name": "ممنت",
+      "tenantId": 14,
+      "passwordHash": "$2b$10$i8YRXygWsQgKolCXwzJqNe1eoiFf/CLqE3evRKEfcLtczGeiSExAe",
+      "users": [
+        {
+          "id": 17,
+          "username": "بی",
+          "email": "بی",
+          "full_name": "ممنت",
+          "role": "admin",
+          "passwordHash": "$2b$10$DDtrbsbOWLlf.VrW1gAcBO7zwCVrBQxF.i1M3LT7DtlEIaJmfvPAC",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "code": "GGLHAW9KL",
+      "name": "شسیشسی",
+      "tenantId": 15,
+      "passwordHash": "$2b$10$i5.UJKi2d67hQibRkFA0QetyUBgDIxz.W9V7XzHJuVElqDBXtxCyy",
+      "users": [
+        {
+          "id": 18,
+          "username": "یبیب",
+          "email": "یبیب",
+          "full_name": "شسیشسی",
+          "role": "admin",
+          "passwordHash": "$2b$10$c2uS5WrCBoFFH14R0/wcUe99PMgS9tAEx9FSnPATWYen7jYTqPhkC",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "code": "GGLFNWKY8",
+      "name": "شسیب",
+      "tenantId": 16,
+      "passwordHash": "$2b$10$NTiQsRSUekXxbCj6S0AM/ufmi.Z5RsAjhsFaVtsEAV2U2svocDktq",
+      "users": [
+        {
+          "id": 19,
+          "username": "یبسی",
+          "email": "یبسی",
+          "full_name": "شسیب",
+          "role": "admin",
+          "passwordHash": "$2b$10$6jXKxPBhRC.PNloEMO4wxuuyc92UHNhUqU6WLEujShAT.1zqiCuGm",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "code": "GGL2B3YJ9",
+      "name": "ص",
+      "tenantId": 17,
+      "passwordHash": "$2b$10$9EYKWHX0ByW.HS088WjbNuy0uJBB5ibUcmBKkBrArZmYK9BsyKqPm",
+      "users": [
+        {
+          "id": 20,
+          "username": "بیسیب",
+          "email": "بیسیب",
+          "full_name": "ص",
+          "role": "admin",
+          "passwordHash": "$2b$10$w5a.PUREwrpmyJ52yJxUm.8J7yzlrgm2UvVm.6GjK.Xikb4zn9mty",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "code": "GGLSBHMQW",
+      "name": "sdf",
+      "tenantId": 18,
+      "passwordHash": "$2b$10$0V/izZLwxqVjvjlV7yWlzeJ8S2om7LdNTZokETrzf0JiZOd1jMHHq",
+      "users": [
+        {
+          "id": 21,
+          "username": "sdf",
+          "email": "sdf",
+          "full_name": "sdf",
+          "role": "admin",
+          "passwordHash": "$2b$10$pa7z/2DUAVYgrmHRGpnm6OD1RnZRzaZvDLXodmsVrcTrbSH2JNDzG",
+          "status": "active"
+        }
+      ]
+    },
+    {
+      "code": "GGL6UR794",
+      "name": "سیسیب",
+      "tenantId": 19,
+      "passwordHash": "$2b$10$zNs5E8xX1cxUh2PbQlPNeObhTpHdyBBPsvfPpYiurnMFMXr7Dy7ee",
+      "users": [
+        {
+          "id": 22,
+          "username": "یسبسیب",
+          "email": "یسبسیب",
+          "full_name": "سیسیب",
+          "role": "admin",
+          "passwordHash": "$2b$10$Wgn7DL.v5USJMrZcK4CiRuPAzuWA3tgGwiMpjK82ntIlmuSbdcXTK",
+          "status": "active"
+        }
+      ]
+    }
+  ],
+  "stateByShop": {
+    "SHOP001": {},
+    "GGLS5NBDG": {},
+    "GGLT63KHU": {},
+    "GGLK9GKR3": {},
+    "GGLTD4UXT": {},
+    "GGL2W7Z7X": {},
+    "GGLPBGSZL": {},
+    "GGL23HDN3": {},
+    "GGL6DNP2E": {},
+    "GGL2S7NEM": {},
+    "GGL4KH6YW": {},
+    "GGLQA9F8K": {},
+    "GGLDAWHRB": {},
+    "GGLHAW9KL": {},
+    "GGLFNWKY8": {},
+    "GGL2B3YJ9": {},
+    "GGLSBHMQW": {},
+    "GGL6UR794": {}
+  },
+  "systemSettings": {
+    "resetCodeHash": "$2b$10$4YR6ejS.SAHCUgQQtrNdcuLdV9FXppKh2Be6Vn4Vo4m1V54peo64C"
+  },
+  "shopConfigs": {},
+  "settingsLogs": []
+}

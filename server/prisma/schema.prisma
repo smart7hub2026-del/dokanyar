@@ -1,0 +1,17 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+// We keep the existing app logic (which manipulates a big nested object)
+// by storing it as JSON in a single row. This still moves persistence
+// from a local JSON file to a real database engine (SQLite/Postgres/etc).
+model PlatformState {
+  id        Int   @id
+  state     Json
+  updatedAt DateTime @updatedAt
+}
+

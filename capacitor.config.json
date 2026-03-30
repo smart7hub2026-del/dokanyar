@@ -1,0 +1,11 @@
+{
+  "appId": "af.dokanyar.app",
+  "appName": "Dokanyar",
+  "webDir": "dist",
+  "android": {
+    "allowMixedContent": true
+  },
+  "server": {
+    "androidScheme": "https"
+  }
+}
