@@ -19,7 +19,6 @@ export const apiCheckShop = (shopCode: string, shopPassword: string) =>
     shopName: string;
     roles: ShopRole[];
     is_demo_shop?: boolean;
-    /** برچسب نقش مدیر از تنظیمات دکان (پیش‌فرض admin) */
     admin_role_name?: string;
   }>('/api/auth/check-shop', {
     method: 'POST',
@@ -93,7 +92,6 @@ export interface BusinessTypeRow {
   icon: string;
   is_active: boolean;
   features: string[];
-  /** دادهٔ اختصاصی صنف (معادل JSONB) — کلیدهای پیشنهادی در سرور پر می‌شود */
   metadata?: Record<string, unknown>;
 }
 
@@ -184,7 +182,6 @@ export interface Tenant {
   users_count: number;
   products_count: number;
   sales_today: number;
-  /** فقط ابرادمین — آخرین رمزهای ذخیره‌شده هنگام ایجاد/تأیید/بازنشانی */
   credential_record?: {
     shop_password_plain?: string;
     admin_role_password_plain?: string;
@@ -202,17 +199,13 @@ export interface ShopSessionPayload {
   shop_meta?: AuthMeShopMeta;
 }
 
-/** پاسخ ثبت‌نام دیمو — بدون توکن؛ ورود فقط پس از صفحهٔ ورود با کد/رمز فروشگاه */
 export interface DemoRegisterPayload {
   registered: true;
   shopCode: string;
   shopPassword: string;
   shopName?: string;
-  /** نام نمایشی مدیر (همان نام ثبت‌نام) */
   adminFullName: string;
-  /** عنوان نقش در صفحهٔ ورود */
   adminRoleTitle: string;
-  /** رمز نقش مدیر = همان رمزی که کاربر در ثبت‌نام دیمو انتخاب کرده */
   adminRolePassword: string;
   trialEndsAt?: string | null;
   trialDaysRemaining?: number | null;
@@ -235,36 +228,12 @@ function isCapacitorNative(): boolean {
   return Boolean(w.Capacitor?.isNativePlatform?.());
 }
 
-// Empty string = relative path → Vite proxy forwards /api/* to backend.
-// If .env sets http://localhost:4000 but the user opens the app from http://192.168.x.x:5173
-// (e.g. on a phone), fetch would hit the phone's localhost — always fails. Strip localhost base in this case.
-// در WebView اندروید (Capacitor) مسیر نسبی /api کار نمی‌کند — باید VITE_API_BASE_URL را موقع build بزنید.
-const resolveApiBase = (): string => {
-  const raw = String(import.meta.env.VITE_API_BASE_URL || '').trim();
-  if (typeof window !== 'undefined' && isCapacitorNative()) {
-    const base = raw.replace(/\/$/, '');
-    if (base) return base;
-    const devFallback = String(import.meta.env.VITE_ANDROID_API_URL || '').trim().replace(/\/$/, '');
-    if (devFallback) return devFallback;
-    return 'http://10.0.2.2:4000';
-  }
-  if (typeof window === 'undefined') return raw;
-  const host = window.location.hostname;
-  const pageIsLocal = host === 'localhost' || host === '127.0.0.1';
-  if (!raw || pageIsLocal) return raw;
-  try {
-    const u = new URL(raw);
-    const apiIsLoopback = u.hostname === 'localhost' || u.hostname === '127.0.0.1';
-    if (apiIsLoopback) return '';
-  } catch {
-    return raw;
-  }
-  return raw;
-};
+// ============================================================
+// ✅ اصلاح شده: آدرس بک‌اند مستقیماً به Render متصل شده
+// ============================================================
+const API_BASE = 'https://dokanyarshopi-backend.onrender.com';
+// ============================================================
 
-const API_BASE = resolveApiBase();
-
-/** بدون کوکی؛ برای صفحهٔ خوش‌آمدگویی. در خطا فرض می‌شود آزمایشی فعال است (رفتار dev). */
 export const apiGetPublicMeta = async (): Promise<{ trial_quick_signup_enabled: boolean }> => {
   try {
     const res = await fetch(`${API_BASE}/api/meta/public`, { credentials: 'omit' });
@@ -288,8 +257,6 @@ export const apiMasterLoginAudit = (limit?: number, token?: string) =>
     { token }
   );
 
-// همهٔ درخواست‌ها credentials (کوکی) می‌فرستند. اگر token بدهید، سرور ابتدا Bearer را
-// به کوکی ترجیح می‌دهد تا نشست قدیمی در کوکی با توکن جدید در حافظه قاطی نشود.
 const request = async <T>(
   url: string,
   options?: RequestInit & { token?: string }
@@ -301,7 +268,6 @@ const request = async <T>(
   if (options?.token) {
     headers['Authorization'] = `Bearer ${options.token}`;
   }
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { token: _token, ...restOptions } = options ?? {};
   let res: Response;
   try {
@@ -397,7 +363,6 @@ export interface AuthMeResponse {
   user: AuthUser;
   shop?: { code: string; name: string; tenant_id: number };
   shop_meta?: AuthMeShopMeta;
-  /** هم‌تراز با ورود — برای تازه‌سازی صفحه تا sessionExpiry محلی با کوکی/JWT ناهماهنگ نشود */
   sessionTimeoutMinutes?: number;
 }
 
@@ -406,8 +371,6 @@ export const apiMe = (token?: string) =>
 
 export const apiLogout = () =>
   request<{ ok: boolean }>('/api/auth/logout', { method: 'POST' });
-
-// ── 2FA ──────────────────────────────────────────────────────────────────────
 
 export const apiTwoFactorSetup = (token?: string) =>
   request<{ secret: string; qrCode: string; otpauth: string }>('/api/auth/2fa/setup', {
@@ -434,8 +397,6 @@ export const apiVerifyTwoFactor = (pendingToken: string, code: string) =>
     method: 'POST',
     body: JSON.stringify({ pendingToken, code }),
   });
-
-// ── Tenant CRUD ───────────────────────────────────────────────────────────────
 
 export const apiGetTenants = (token?: string) =>
   request<{ tenants: Tenant[] }>('/api/master/tenants', { token });
@@ -539,8 +500,6 @@ export const apiVerifyAdminPayment = (
     body: JSON.stringify({ paymentId, decision, note: note ?? '' }),
   });
 
-// ── State / Shop operations ───────────────────────────────────────────────────
-
 export const apiLoadState = (token?: string, shopCode?: string) =>
   request<{ state: Record<string, unknown> | null }>(
     `/api/state${shopCode ? `?shopCode=${encodeURIComponent(shopCode)}` : ''}`,
@@ -610,7 +569,6 @@ export const apiAdminVerifyPayment = (
     body: JSON.stringify({ paymentId, decision, note }),
   });
 
-// ─── Pending Registrations ───────────────────────────────────────────────────
 export interface PendingRegistration {
   code: string;
   name: string;
@@ -642,7 +600,6 @@ export const apiResetAllData = (token?: string) =>
     token,
   });
 
-// ─── Broadcast Notifications ─────────────────────────────────────────────────
 export interface Broadcast {
   id: number; title: string; message: string;
   target_type: string; target_shops: string[];
@@ -662,7 +619,6 @@ export const apiSendBroadcast = (data: { title: string; message: string; target_
 export const apiDeleteBroadcast = (id: number, token?: string) =>
   request<{ ok: boolean }>(`/api/master/broadcasts/${id}`, { method: 'DELETE', token });
 
-// ─── OTP ─────────────────────────────────────────────────────────────────────
 export const apiSendOtp = (email: string) =>
   request<{ ok: boolean; message: string; devCode?: string }>('/api/auth/otp/send', {
     method: 'POST',
