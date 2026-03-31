@@ -6,3 +6,4 @@ server/prisma/*.db-*
 server/backups/
 backups/
 server/data/database.json
+node_modules/ 
