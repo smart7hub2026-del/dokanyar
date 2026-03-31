@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 import { Shield, Smartphone, Key, Eye, EyeOff, CheckCircle, AlertTriangle, QrCode, Copy, Check, ClipboardList } from 'lucide-react';
 import { useStore } from '../store/useStore';
-import { apiTwoFactorSetup, apiTwoFactorEnable, apiTwoFactorDisable } from '../services/api';
+import { apiTwoFactorSetup, apiTwoFactorEnable, apiTwoFactorDisable, getApiBaseUrl } from '../services/api';
 import { SECURITY_GAPS_CATALOG, countGapsByLevel } from '../data/securityGapsCatalog';
 import PasswordStrength from './PasswordStrength';
 import { validatePasswordPolicy } from '../utils/passwordPolicy';
@@ -131,7 +131,7 @@ export default function SecurityPage({ twoFactorEnabled = false }: SecurityPageP
     setPwError('');
     setPwLoading(true);
     try {
-      const API_BASE = import.meta.env.VITE_API_BASE_URL || '';
+      const API_BASE = getApiBaseUrl();
       const headers: Record<string, string> = { 'Content-Type': 'application/json' };
       if (authToken) headers['Authorization'] = `Bearer ${authToken}`;
       const res = await fetch(`${API_BASE}/api/auth/change-password`, {

@@ -5,8 +5,9 @@ import {
   Package, Users, Receipt, Wallet, Terminal,
 } from 'lucide-react';
 import { useStore } from '../store/useStore';
+import { getApiBaseUrl } from '../services/api';
 
-const API = import.meta.env.VITE_API_BASE_URL || '';
+const API = getApiBaseUrl();
 
 interface HistoryEntry { id: number; action: string; timestamp: string; by: string }
 

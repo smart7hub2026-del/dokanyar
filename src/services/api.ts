@@ -222,17 +222,13 @@ interface TwoFactorRequiredResponse {
 
 export type LoginResult = ShopSessionPayload | TwoFactorRequiredResponse;
 
-function isCapacitorNative(): boolean {
-  if (typeof window === 'undefined') return false;
-  const w = window as Window & { Capacitor?: { isNativePlatform?: () => boolean } };
-  return Boolean(w.Capacitor?.isNativePlatform?.());
-}
+// ============================================================
+// ✅ آدرس مستقیم بک‌اند در Render
+// ============================================================
+const API_BASE = 'https://dokanyarshopi-backend-1.onrender.com';
+// ============================================================
 
-// ============================================================
-// ✅ اصلاح شده: آدرس بک‌اند مستقیماً به Render متصل شده
-// ============================================================
-const API_BASE = 'https://dokanyarshopi-backend.onrender.com';
-// ============================================================
+export const getApiBaseUrl = (): string => API_BASE;
 
 export const apiGetPublicMeta = async (): Promise<{ trial_quick_signup_enabled: boolean }> => {
   try {
