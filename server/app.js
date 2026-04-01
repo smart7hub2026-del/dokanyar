@@ -139,6 +139,25 @@ if (IS_PROD && ALLOWED_ORIGINS.length === 0) {
   );
 }
 
+/** روی Render + Vercel: اگر true باشد هر origin با https و *.vercel.app هم قبول می‌شود (پیش‌نمایش و دامنهٔ اصلی) */
+const CORS_ALLOW_VERCEL_APP =
+  String(process.env.CORS_ALLOW_VERCEL_APP || '').toLowerCase() === 'true';
+
+const isCorsOriginAllowed = (origin) => {
+  if (!origin) return true;
+  if (!IS_PROD) return true;
+  if (ALLOWED_ORIGINS.includes(origin)) return true;
+  if (CORS_ALLOW_VERCEL_APP) {
+    try {
+      const u = new URL(origin);
+      if (u.protocol === 'https:' && u.hostname.endsWith('.vercel.app')) return true;
+    } catch (_) {
+      /* ignore */
+    }
+  }
+  return false;
+};
+
 const authAttemptStore = new Map();
 const lockoutStore = new Map();
 const reqRateStore = new Map();
@@ -735,9 +754,7 @@ app.use(cors({
     if (!origin) return callback(null, true);
     // In development: allow any origin (Vite proxy on different IPs, mobile, etc.)
     if (!IS_PROD) return callback(null, true);
-    // In production: enforce whitelist
-    if (ALLOWED_ORIGINS.length === 0) return callback(new Error('CORS origin denied'));
-    if (ALLOWED_ORIGINS.includes(origin)) return callback(null, true);
+    if (isCorsOriginAllowed(origin)) return callback(null, true);
     return callback(new Error('CORS origin denied'));
   },
   credentials: true,
