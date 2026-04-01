@@ -736,6 +736,8 @@ const appendLoginAudit = async (db, row) => {
 
 app.set('trust proxy', 1);
 app.use(helmet({
+  /** بدون این، پیش‌فرض Helmet «same-origin» است و fetch از دامنهٔ دیگر (مثلاً Vercel → Render) در مرورگر قطع می‌شود (Failed to fetch). */
+  crossOriginResourcePolicy: { policy: 'cross-origin' },
   contentSecurityPolicy: {
     useDefaults: true,
     directives: {
@@ -781,7 +783,13 @@ app.get('/api/meta/public', (_req, res) => {
 
 app.use(requestRateLimiter);
 app.use((req, res, next) => {
-  if (IS_PROD && req.headers['x-forwarded-proto'] !== 'https') {
+  if (!IS_PROD) return next();
+  /** فقط درخواست صریح http را رد کن؛ اگر هدر نبود (برخی پروکسی‌ها) با !== 'https' همه چیز ۴۲۶ می‌شد و مرورگر Failed to fetch می‌داد. */
+  const proto = String(req.headers['x-forwarded-proto'] || '')
+    .split(',')[0]
+    .trim()
+    .toLowerCase();
+  if (proto === 'http') {
     return res.status(426).json({ message: 'HTTPS required' });
   }
   return next();
