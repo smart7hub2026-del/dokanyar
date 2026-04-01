@@ -77,7 +77,9 @@ const REQUIRE_2FA_FOR_PRIVILEGED_ROLES =
     : String(process.env.REQUIRE_2FA_FOR_PRIVILEGED_ROLES || 'false') === 'true';
 const MIN_PASSWORD_LENGTH = Number(process.env.MIN_PASSWORD_LENGTH || (process.env.NODE_ENV === 'test' ? 4 : 8));
 const RECAPTCHA_SECRET_KEY = String(process.env.RECAPTCHA_SECRET_KEY || '').trim();
-const RECAPTCHA_REQUIRED_IN_PROD = String(process.env.RECAPTCHA_REQUIRED_IN_PROD || 'true') !== 'false';
+/** فقط با RECAPTCHA_REQUIRED_IN_PROD=true روشن می‌شود؛ پیش‌فرض خاموش (مثلاً Render بدون کلید) */
+const RECAPTCHA_REQUIRED_IN_PROD =
+  String(process.env.RECAPTCHA_REQUIRED_IN_PROD || '').toLowerCase() === 'true';
 
 /** در production پیش‌فرض خاموش؛ با ALLOW_TRIAL_QUICK_SIGNUP=true فعال شود */
 const trialQuickSignupEnabled = () => {
